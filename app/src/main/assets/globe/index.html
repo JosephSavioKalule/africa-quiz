@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0A1628; overflow: hidden; }
+        #globe { width: 100vw; height: 100vh; }
+    </style>
+</head>
+<body>
+    <div id="globe"></div>
+    <script src="globe.gl.min.js"></script>
+    <script>
+        let globe;
+        let currentMarker = [];
+
+        function initGlobe() {
+            globe = Globe()
+                .globeImageUrl('earth-blue-marble.jpg')
+                .backgroundColor('#0A1628')
+                .showAtmosphere(true)
+                .atmosphereColor('#3a228a')
+                .atmosphereAltitude(0.25)
+                .pointsData([])
+                .pointColor(() => '#ff3333')
+                .pointAltitude(0.06)
+                .pointRadius(0.6)
+                .pointsMerge(false)
+                (document.getElementById('globe'));
+
+            // Center on Africa
+            globe.pointOfView({ lat: 5, lng: 20, altitude: 2.2 }, 0);
+
+            // Disable auto-rotation
+            globe.controls().autoRotate = false;
+            globe.controls().enableZoom = true;
+        }
+
+        function showCapital(lat, lng) {
+            currentMarker = [{ lat: lat, lng: lng }];
+            globe.pointsData(currentMarker);
+            globe.pointOfView({ lat: lat, lng: lng, altitude: 1.8 }, 1000);
+        }
+
+        function clearMarker() {
+            currentMarker = [];
+            globe.pointsData([]);
+            globe.pointOfView({ lat: 5, lng: 20, altitude: 2.2 }, 1000);
+        }
+
+        initGlobe();
+    </script>
+</body>
+</html>
