@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -16,9 +18,22 @@ android {
         versionName = "1.0"
     }
 
+    signingConfigs {
+        create("release") {
+            val props = Properties()
+            val localProps = rootProject.file("local.properties")
+            if (localProps.exists()) props.load(localProps.inputStream())
+            storeFile = file(props.getProperty("release.storeFile") ?: System.getProperty("user.home") + "/.android/release.keystore")
+            storePassword = props.getProperty("release.storePassword") ?: ""
+            keyAlias = props.getProperty("release.keyAlias") ?: "africa-quiz"
+            keyPassword = props.getProperty("release.keyPassword") ?: ""
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
