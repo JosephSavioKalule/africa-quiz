@@ -71,7 +71,7 @@ python3 scripts/take_screenshots.py --skip-boot  # emulator already running
 ## Project Structure
 
 ```
-app/src/main/java/com/example/africaquiz/
+app/src/main/java/com/mufradat/africaquiz/
 ├── MainActivity.kt
 ├── data/                    # Data layer
 │   ├── model/               # Country, QuizData

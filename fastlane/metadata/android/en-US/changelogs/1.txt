@@ -1,0 +1,1 @@
+Initial release with 54 African countries, 3D globe visualization, optional timer, and score review.

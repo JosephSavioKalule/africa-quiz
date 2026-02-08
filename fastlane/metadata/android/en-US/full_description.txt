@@ -1,0 +1,12 @@
+An Android quiz game that tests your knowledge of African capital cities, featuring an interactive 3D globe.
+
+Pick from 54 countries, watch the globe spin to each capital, and see how well you really know the continent.
+
+Features:
+* 10 questions per round, randomly selected from all 54 African countries
+* 4 choices per question with smart distractors
+* Interactive 3D globe animates to each capital with a marker
+* Optional 15-second countdown timer
+* Green/red feedback with auto-advance
+* Score breakdown with full answer review
+* Fully offline — no internet connection needed
