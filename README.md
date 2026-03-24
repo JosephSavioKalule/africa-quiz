@@ -2,7 +2,8 @@
 
 An Android quiz game that tests your knowledge of African capital cities, featuring an interactive 3D globe powered by [Globe.gl](https://globe.gl/).
 
-Pick from 54 countries, watch the globe spin to each capital, and see how well you really know the continent.
+## Attribution
+Cloned from [https://codeberg.org/Mufradat/africa-quiz](https://codeberg.org/Mufradat/africa-quiz)
 
 ## Screenshots
 
