@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.util.Properties
 
 plugins {
@@ -23,7 +24,10 @@ android {
             val props = Properties()
             val localProps = rootProject.file("local.properties")
             if (localProps.exists()) props.load(localProps.inputStream())
-            storeFile = file(props.getProperty("release.storeFile") ?: System.getProperty("user.home") + "/.android/release.keystore")
+            storeFile = file(
+                props.getProperty("release.storeFile")
+                    ?: (System.getProperty("user.home") + "/.android/release.keystore")
+            )
             storePassword = props.getProperty("release.storePassword") ?: ""
             keyAlias = props.getProperty("release.keyAlias") ?: "africa-quiz"
             keyPassword = props.getProperty("release.keyPassword") ?: ""
@@ -44,15 +48,18 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
+
     buildFeatures {
         compose = true
     }
     dependenciesInfo {
         includeInApk = false
         includeInBundle = false
+    }
+}
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.fromTarget("11")
     }
 }
 
